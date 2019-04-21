@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="84c0a3ab-dfb2-4cda-a2fc-d17125815cf3" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tripadvisor/spiders/CitySpider.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="95">
+              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+              <folding>
+                <element signature="e#0#42#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tripadvisor/spiders/ResSpider.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3724">
+              <caret line="238" lean-forward="true" selection-start-line="238" selection-end-line="238" />
+              <folding>
+                <element signature="e#0#42#0" expanded="true" />
+                <element signature="e#416#445#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tripadvisor/spiders/RevSpider.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1691">
+              <caret line="89" lean-forward="true" selection-start-line="89" selection-end-line="89" />
+              <folding>
+                <element signature="e#0#42#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tripadvisor/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="513">
+              <caret line="27" column="34" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tripadvisor/middlewares.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="111" column="40" lean-forward="true" selection-start-line="111" selection-start-column="40" selection-end-line="111" selection-end-column="40" />
+              <folding>
+                <element signature="e#169#195#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tripadvisor/pipelines.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="57">
+              <caret line="3" column="1" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
+              <folding>
+                <element signature="e#193#207#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>pipe</find>
+      <find>parse_next</find>
+      <find>sub</find>
+      <find>util</find>
+      <find>yield</find>
+    </findStrings>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/tripadvisor/spiders/ReviewerSpider.py" />
+        <option value="$PROJECT_DIR$/tripadvisor/spiders/NearbyRes.py" />
+        <option value="$PROJECT_DIR$/tripadvisor/spiders/NearbySpot.py" />
+        <option value="$PROJECT_DIR$/tripadvisor/spiders/NearbyHotel.py" />
+        <option value="$PROJECT_DIR$/tripadvisor/spiders/NearbySpider.py" />
+        <option value="$PROJECT_DIR$/tripadvisor/utils.py" />
+        <option value="$PROJECT_DIR$/tripadvisor/items.py" />
+        <option value="$PROJECT_DIR$/tripadvisor/pipelines.py" />
+        <option value="$PROJECT_DIR$/tripadvisor/spiders/CitySpider.py" />
+        <option value="$PROJECT_DIR$/tripadvisor/settings.py" />
+        <option value="$PROJECT_DIR$/tripadvisor/middlewares.py" />
+        <option value="$PROJECT_DIR$/tripadvisor/spiders/ResSpider.py" />
+        <option value="$PROJECT_DIR$/tripadvisor/spiders/RevSpider.py" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="1">
+    <option name="x" value="102" />
+    <option name="y" value="100" />
+    <option name="width" value="1449" />
+    <option name="height" value="888" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="tripadvisor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tripadvisor" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tripadvisor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tripadvisor" type="462c0819:PsiDirectoryNode" />
+              <item name="tripadvisor" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tripadvisor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tripadvisor" type="462c0819:PsiDirectoryNode" />
+              <item name="tripadvisor" type="462c0819:PsiDirectoryNode" />
+              <item name="spiders" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\WorkSpace\python\jupyter\BigData\spider\tutorial\tripadvisor\tripadvisor" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="84c0a3ab-dfb2-4cda-a2fc-d17125815cf3" name="Default Changelist" comment="" />
+      <created>1555154426373</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1555154426373</updated>
+      <workItem from="1555154428740" duration="11614000" />
+      <workItem from="1555204216384" duration="25203000" />
+      <workItem from="1555241379799" duration="8716000" />
+      <workItem from="1555250261240" duration="3932000" />
+      <workItem from="1555293385711" duration="1211000" />
+      <workItem from="1555309136572" duration="11656000" />
+      <workItem from="1555641333138" duration="288000" />
+      <workItem from="1555641658532" duration="6969000" />
+      <workItem from="1555657964367" duration="16443000" />
+      <workItem from="1555723816102" duration="29601000" />
+      <workItem from="1555771751380" duration="5787000" />
+      <workItem from="1555809087625" duration="13961000" />
+      <workItem from="1555827273926" duration="2125000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="137506000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="68" y="67" width="966" height="592" extended-state="0" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27863437" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3291367" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32978722" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.38828632" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Python Console" order="12" weight="0.2535461" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="Mongo Explorer" order="4" />
+      <window_info anchor="right" id="Database" order="5" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/tripadvisor/spiders/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tripadvisor/spiders/NearbySpot.py" />
+    <entry file="file://$PROJECT_DIR$/tripadvisor/spiders/NearbyRes.py" />
+    <entry file="file://$PROJECT_DIR$/tripadvisor/spiders/NearbySpider.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="27" lean-forward="true" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tripadvisor/spiders/ReviewerSpider.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="6" selection-start-line="6" selection-end-line="11" selection-end-column="65" />
+          <folding>
+            <element signature="e#0#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tripadvisor/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="3" column="11" lean-forward="true" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tripadvisor/items.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1558">
+          <caret line="82" column="25" lean-forward="true" selection-start-line="82" selection-start-column="25" selection-end-line="82" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tripadvisor/pipelines.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="3" column="1" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
+          <folding>
+            <element signature="e#193#207#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tripadvisor/middlewares.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="111" column="40" lean-forward="true" selection-start-line="111" selection-start-column="40" selection-end-line="111" selection-end-column="40" />
+          <folding>
+            <element signature="e#169#195#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tripadvisor/spiders/ResSpider.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3724">
+          <caret line="238" lean-forward="true" selection-start-line="238" selection-end-line="238" />
+          <folding>
+            <element signature="e#0#42#0" expanded="true" />
+            <element signature="e#416#445#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tripadvisor/spiders/RevSpider.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1691">
+          <caret line="89" lean-forward="true" selection-start-line="89" selection-end-line="89" />
+          <folding>
+            <element signature="e#0#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tripadvisor/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="27" column="34" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tripadvisor/spiders/CitySpider.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+          <folding>
+            <element signature="e#0#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
