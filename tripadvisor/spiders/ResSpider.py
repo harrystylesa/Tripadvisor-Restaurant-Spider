@@ -5,7 +5,7 @@ from ..utils import Util
 
 
 class ResSpider(Spider):
-    name = 'restaurant'
+    name = 'restaurants'
     allowed_domains = ['tripadvisor.cn']
     start_urls = ["https://www.tripadvisor.cn/Restaurants-g308272-Shanghai.html#EATERY_OVERVIEW_BOX"]
     base = "https://www.tripadvisor.cn"
@@ -61,6 +61,9 @@ class ResSpider(Spider):
                 self.start_urls.append(format(line.rstrip()))
 
     def parse(self, response):
+        if response.status == 403 or response.status == 500 or response.status == 10060 or response.status == 503:
+            yield Request(response.url, callback=self.parse, dont_filter=True)
+            return
         # 取出每个餐厅的链接
         ress = response.xpath('//a[@class="property_title"]/@href').extract()
         for res in ress:
@@ -69,7 +72,9 @@ class ResSpider(Spider):
             # print(url)
             yield Request(url, callback=self.parse_res)
         # 分页找出所有餐厅列表
-        href = response.xpath('//a[@class="nav next rndBtn ui_button primary taLnk"]/@href').extract()[0]
+        hrefs = response.xpath('//a[@class="nav next rndBtn ui_button primary taLnk"]/@href').extract()
+        if len(hrefs) > 0:
+            href = hrefs[0]
         next_url = self.base + href
         next_url.replace(' ', '')
         # print(next_url)
@@ -77,11 +82,19 @@ class ResSpider(Spider):
 
     def parse_res(self, response):
         # 取出餐厅的具体内容
+        if response.status == 403 or response.status == 500 or response.status == 10060 or response.status == 503:
+            yield Request(response.url, callback=self.parse_res, dont_filter=True)
+            return
         item = ResItem()
-        item['coll'] = 'restaurant'
-        item['rank'] = int(response.xpath('//div[@class="popIndexContainer"]/div/span/b/span/text()').extract()[0])
+        item['coll'] = 'restaurants'
+        ranks = response.xpath('//div[@class="popIndexContainer"]/div/span/b/span/text()').extract()
+        if len(ranks) > 0:
+            item['rank'] = int(Util.del_com(self, ranks[0]))
         item['resID'] = int(re.search(r'\d+', response.url).group(0))
-        item['chi'] = response.xpath('//h1[@class="ui_header h1"]/text()').extract()[0]
+        resID = item['resID']
+        chis = response.xpath('//h1[@class="ui_header h1"]/text()').extract()
+        if len(chis) > 0:
+            item['chi'] = chis[0]
         start = re.search(r'Reviews-', response.url).span()[-1]
         stop = re.search(r'-\w+.html', response.url).span()[0]
         item['eng'] = response.url[start:stop].replace('_', ' ')
@@ -91,9 +104,10 @@ class ResSpider(Spider):
         if len(revnums) > 1:
             revnum = Util.del_com(self, revnums[0])
             item['revnum'] = int(re.search(r'\d+', revnum).group(0))
-        item['star'] = float(response.xpath(
-            '//span[@class="restaurants-detail-overview-cards-RatingsOverviewCard__overallRating--nohTl"]/text()').extract()[
-                                 0])
+        stars = response.xpath(
+            '//span[@class="restaurants-detail-overview-cards-RatingsOverviewCard__overallRating--nohTl"]/text()').extract()
+        if len(stars) > 0:
+            item['star'] = float(stars[0])
         stars = response.xpath(
             '//span[@class="restaurants-detail-overview-cards-RatingsOverviewCard__ratingBubbles--1kQYC"]/span/@class').extract()
         length = len(stars)
@@ -122,11 +136,11 @@ class ResSpider(Spider):
             item['time'] = list[-1]
         marks = response.xpath('//span[@class="row_num  is-shown-at-tablet"]/text()').extract()
         if len(marks) > 4:
-            item['great'] = int(marks[0])
-            item['good'] = int(marks[1])
-            item['normal'] = int(marks[2])
-            item['worse'] = int(marks[3])
-            item['horrible'] = int(marks[4])
+            item['great'] = int(Util.del_com(self, marks[0]))
+            item['good'] = int(Util.del_com(self, marks[1]))
+            item['normal'] = int(Util.del_com(self, marks[2]))
+            item['worse'] = int(Util.del_com(self, marks[3]))
+            item['horrible'] = int(Util.del_com(self, marks[4]))
 
         print(item)
         yield item
@@ -139,7 +153,7 @@ class ResSpider(Spider):
         hotelurl = hotelurl.replace('-Reviews-', '-')
 
         # print(url)
-        yield Request(url, callback=self.parse_nearbyHotel, meta={'resID': item['resID']})
+        yield Request(hotelurl, callback=self.parse_nearbyHotel, meta={'resID': resID})
 
         # 附近餐厅
         resurl = url
@@ -147,12 +161,12 @@ class ResSpider(Spider):
         resurl = resurl.replace('-Reviews-', '-')
         for i in range(0, 7):
             if i == 0:
-                yield Request(resurl, callback=self.parse_nearbyRes, meta={'resID': item['resID']})
+                yield Request(resurl, callback=self.parse_nearbyRes, meta={'resID': resID})
             else:
                 index = re.search(r'd\d+', resurl).span()[-1]
                 next_url = resurl[0:index] + "-oa%s" % (i * 30) + resurl[index:]
                 print(next_url)
-                yield Request(next_url, callback=self.parse_nearbyRes, meta={'resID': item['resID']})
+                yield Request(next_url, callback=self.parse_nearbyRes, meta={'resID': resID})
 
         # 附近景点
         spoturl = url
@@ -160,18 +174,20 @@ class ResSpider(Spider):
         spoturl = spoturl.replace('-Reviews-', '-')
         for i in range(0, 7):
             if i == 0:
-                yield Request(spoturl, callback=self.parse_nearbySpot, meta={'resID': item['resID']})
+                yield Request(spoturl, callback=self.parse_nearbySpot, meta={'resID': resID})
             else:
                 index = re.search(r'd\d+', spoturl).span()[-1]
                 next_url = spoturl[0:index] + "-oa%s" % (i * 30) + spoturl[index:]
                 print(next_url)
-                yield Request(next_url, callback=self.parse_nearbySpot, meta={'resID': item['resID']})
-
+                yield Request(next_url, callback=self.parse_nearbySpot, meta={'resID': resID})
 
     def parse_nearbyHotel(self, response):
+        if response.status == 403 or response.status == 500 or response.status == 10060 or response.status == 503:
+            yield Request(response.url, callback=self.parse_nearbyHotel, dont_filter=True)
+            return
         item = UpItem()
-        item['coll'] = 'nearbyhotel'
-        item['resID'] = response.meta['resID']
+        item['coll'] = 'nearbyhotels'
+        item['resID'] = int(re.search(r'd\d+', response.url).group(0)[1:])
         hotels = response.xpath('//a[@class="property_title prominent "]/text()').extract()
         hrefs = response.xpath('//a[@class="property_title prominent "]/@href').extract()
         ids = []
@@ -194,9 +210,12 @@ class ResSpider(Spider):
         yield Request(next_url, self.parse_nearbyHotel)
 
     def parse_nearbyRes(self, response):
+        if response.status == 403 or response.status == 500 or response.status == 10060 or response.status == 503:
+            yield Request(response.url, callback=self.parse_nearbyRes, dont_filter=True)
+            return
         item = UpItem()
-        item['coll'] = 'nearbyres'
-        item['resID'] = response.meta['resID']
+        item['coll'] = 'nearbyress'
+        item['resID'] = int(re.search(r'd\d+', response.url).group(0)[1:])
         ress = response.xpath('//div[@class="location_name"]/a/text()').extract()
         hrefs = response.xpath('//div[@class="location_name"]/a/@href').extract()
         ids = []
@@ -216,9 +235,12 @@ class ResSpider(Spider):
         yield item
 
     def parse_nearbySpot(self, response):
+        if response.status == 403 or response.status == 500 or response.status == 10060 or response.status == 503:
+            yield Request(response.url, callback=self.parse_nearbySpot, dont_filter=True)
+            return
         item = UpItem()
-        item['coll'] = 'nearbyspot'
-        item['resID'] = response.meta['resID']
+        item['coll'] = 'nearbyspots'
+        item['resID'] = int(re.search(r'd\d+', response.url).group(0)[1:])
         spots = response.xpath('//div[@class="location_name"]/a/text()').extract()
         hrefs = response.xpath('//div[@class="location_name"]/a/@href').extract()
         ids = []

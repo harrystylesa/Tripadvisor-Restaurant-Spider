@@ -20,18 +20,27 @@ MONGO_HOST = "127.0.0.1"
 MONGO_PORT = 27017
 MONGO_DB = "tripadvisor"
 # MONGO_COLL = "res"
-DUPEFILTER_CLASS = 'scrapy.dupefilter.RFPDupeFilter'
+# DUPEFILTER_CLASS = 'scrapy.dupefilter.RFPDupeFilter'
 DUPEFILTER_DEBUG = False
-
-DOWNLOAD_DELAY = 1
+DOWNLOAD_TIMEOUT = 180
+DOWNLOAD_DELAY = 0.5
 COOKIES_ENABLED = False
-CONCURRENT_REQUESTS_PER_DOMAIN = 4
+# CONCURRENT_REQUESTS_PER_DOMAIN = 4
 
+PROXIES = ['http://116.196.90.176:3128',
+           'http://119.48.175.246:9999',
+           'http://182.92.105.136:3128',
+           'http://218.60.8.83:3129',
+           'http://218.60.8.99:3129',
+           'http://111.177.181.44:9999',
+           'http://123.56.74.221:80',
+           'http://47.92.5.85:3128',
+           'http://60.205.202.3:3128']
 SPLASH_URL = 'http://0.0.0.0:8050'
 
-DUPEFILTER_CLASS = 'scrapy_splash.SplashAwareDupeFilter'
+# DUPEFILTER_CLASS = 'scrapy_splash.SplashAwareDupeFilter'
 
-HTTPCACHE_STORAGE = 'scrapy_splash.SplashAwareFSCacheStorage'
+# HTTPCACHE_STORAGE = 'scrapy_splash.SplashAwareFSCacheStorage'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 # USER_AGENT = 'tripadvisor (+http://www.yourdomain.com)'
@@ -65,8 +74,8 @@ ROBOTSTXT_OBEY = False
 # Enable or disable spider middlewares
 # See https://doc.scrapy.org/en/latest/topics/spider-middleware.html
 SPIDER_MIDDLEWARES = {
-    'scrapy_splash.SplashDeduplicateArgsMiddleware': 100,
-    # 'tripadvisor.middlewares.TripadvisorSpiderMiddleware': 543,
+    # 'scrapy_splash.SplashDeduplicateArgsMiddleware': 100,
+    'tripadvisor.middlewares.TripadvisorSpiderMiddleware': 100,
 }
 
 # Enable or disable downloader middlewares
@@ -77,6 +86,7 @@ DOWNLOADER_MIDDLEWARES = {
     # 'scrapy_splash.SplashMiddleware': 725,
     # 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware': 810,
     'tripadvisor.middlewares.MyUserAgentMiddleware': 543,
+    'tripadvisor.middlewares.ProxyMiddleware': 544,
     # 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,
 }
 
@@ -88,9 +98,9 @@ DOWNLOADER_MIDDLEWARES = {
 
 # Configure item pipelines
 # # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
-# ITEM_PIPELINES = {
-#    'tripadvisor.pipelines.TripadvisorPipeline': 300,
-# }
+ITEM_PIPELINES = {
+    'tripadvisor.pipelines.TripadvisorPipeline': 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html

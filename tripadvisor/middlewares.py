@@ -8,6 +8,7 @@
 from scrapy import signals
 from fake_useragent import UserAgent
 from scrapy.downloadermiddlewares.useragent import UserAgentMiddleware
+import random
 
 class TripadvisorSpiderMiddleware(object):
     # Not all methods need to be defined. If a method is not defined,
@@ -111,3 +112,20 @@ class MyUserAgentMiddleware(UserAgentMiddleware):
     def process_request(self, request, spider):
         ua = UserAgent(verify_ssl=False)
         request.headers['User-Agent'] = ua.random
+
+
+class ProxyMiddleware(object):
+    '''
+    设置Proxy
+    '''
+
+    def __init__(self, ip):
+        self.ip = ip
+
+    @classmethod
+    def from_crawler(cls, crawler):
+        return cls(ip=crawler.settings.get('PROXIES'))
+
+    def process_request(self, request, spider):
+        ip = random.choice(self.ip)
+        request.meta['proxy'] = ip

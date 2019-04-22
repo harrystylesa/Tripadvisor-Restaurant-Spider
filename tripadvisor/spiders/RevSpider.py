@@ -24,7 +24,9 @@ class RevSpider(Spider):
             # print(url)
             yield Request(url, callback=self.parse_rev)
         # 分页找出所有餐厅列表
-        href = response.xpath('//a[@class="nav next rndBtn ui_button primary taLnk"]/@href').extract()[0]
+        hrefs = response.xpath('//a[@class="nav next rndBtn ui_button primary taLnk"]/@href').extract()
+        if len(hrefs) > 0:
+            href = hrefs[0]
         next_url = self.base + href
         next_url.replace(' ', '')
         yield Request(next_url, callback=self.parse)
@@ -37,27 +39,35 @@ class RevSpider(Spider):
             revitem = RevItem()
             rev = revs[i]
             revitem['coll'] = 'review'
-            revitem['revID'] = int(rev.xpath('div/div/@data-reviewid').extract()[0])
-            revitem['revdate'] = rev.xpath('div//span[@class="ratingDate"]/@title').extract()[0]
+            revids = rev.xpath('div/div/@data-reviewid').extract()
+            if len(revids) > 0:
+                revitem['revID'] = int(revids[0])
+            revdates = rev.xpath('div//span[@class="ratingDate"]/@title').extract()
+            if len(revdates) > 0:
+                revitem['revdate'] = revdates[0]
             dates = rev.xpath('div//div[@class="prw_rup prw_reviews_stay_date_hsx"]/text()').extract()
             if len(dates) > 0:
                 revitem['date'] = dates[0]
-            revitem['star'] = int(rev.xpath('div//div[@class="ui_column is-9"]/span/@class').extract()[0][-2:]) * 0.1
-            revitem['content'] = re.sub(r'\s+', '',
-                                        rev.xpath('div//div[@class="ui_column is-9"]//p/text()').extract()[0])
-            revitem['reviewer'] = \
-                rev.xpath('div//div[@class="ui_column is-2"]//div[@class="info_text"]/div/text()').extract()[0]
-
-            reviewer_url = self.member + revitem['reviewer']
-            yield Request(reviewer_url, callback=self.parse_reviewer)
+            stars = rev.xpath('div//div[@class="ui_column is-9"]/span/@class').extract()
+            if len(stars) > 0:
+                revitem['star'] = int(stars[0][-2:]) * 0.1
+            contents = rev.xpath('div//div[@class="ui_column is-9"]//p/text()').extract()
+            if len(contents) > 0:
+                revitem['content'] = re.sub(r'\s+', '', contents[0])
+            reviewers = rev.xpath('div//div[@class="ui_column is-2"]//div[@class="info_text"]/div/text()').extract()
+            if len(reviewers) > 0:
+                revitem['reviewer'] = reviewers[0]
+                reviewer_url = self.member + revitem['reviewer']
+                yield Request(reviewer_url, callback=self.parse_reviewer)
 
             list = rev.xpath('div//div[@class="ui_column is-2"]//span[@class="badgetext"]/text()').extract()
             if len(list) > 1:
                 revitem['thanks'] = int(list[1])
             else:
                 revitem['thanks'] = 0
-            revitem['title'] = rev.xpath('div//div[@class="ui_column is-9"]//span[@class="noQuotes"]/text()').extract()[
-                0]
+            titles = rev.xpath('div//div[@class="ui_column is-9"]//span[@class="noQuotes"]/text()').extract()
+            if len(titles) > 0:
+                revitem['title'] = titles[0]
             if len(rev.xpath('div//div[@class="mgrRspnInline"]').extract()) > 0:
                 revitem['isReply'] = True
                 revitem['reply'] = re.sub(r'\s+', '', rev.xpath(
@@ -92,12 +102,15 @@ class RevSpider(Spider):
         item = response.meta['item']
         # print(item)
         item['membership'] = response.xpath('//*[@id="BODYCON"]/div/div/ul/li/div/div/text()').extract()
-        city_url = self.base + response.xpath('//*[@id="TravelMap"]/a/@href').extract()[0]
-        yield Request(city_url, callback=self.get_tocitys, meta={'item': item})
+        city_urls = response.xpath('//*[@id="TravelMap"]/a/@href').extract()
+        if len(city_urls) > 0:
+            city_url = self.base + city_urls[0]
+            yield Request(city_url, callback=self.get_tocitys, meta={'item': item})
 
     def get_tocitys(self, response):
         item = response.meta['item']
-        item['tocity'] = int(
-            response.xpath('//*[@id="MC_MODULES"]/div[2]/div[1]/div[1]/span/span/text()').extract()[0][1:-1])
+        tocitys = response.xpath('//*[@id="MC_MODULES"]/div[2]/div[1]/div[1]/span/span/text()').extract()
+        if len(tocitys) > 0:
+            item['tocity'] = int(tocitys[0][1:-1])
         print(item)
         yield item

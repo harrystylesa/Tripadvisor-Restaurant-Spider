@@ -88,4 +88,3 @@ class NearbyItem(scrapy.Item):
     ID = scrapy.Field()
     name = scrapy.Field()
     dis = scrapy.Field()
-    resID = scrapy.Field()
